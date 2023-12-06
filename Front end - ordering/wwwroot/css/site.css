@@ -1,0 +1,77 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+:root {
+    /* fonts */
+    --table-text-semi-bold: Inter;
+    --callout-bold: "SF Pro Text";
+    /* font sizes */
+    --table-text-semi-bold-size: 16px;
+    --mobile-description-size: 11px;
+    /* Colors */
+    --color-white: #fff;
+    --primary: #28bbad;
+    --color-gray-100: #7c797a;
+    --color-darkslategray: #3f3f3f;
+    --color-gainsboro: #e3e3e3;
+    --gray-600: #6c757d;
+    --label-color-light-primary: #000;
+    /* Gaps */
+    --gap-lg: 18px;
+    --gap-2xl: 21px;
+    --gap-3xs: 10px;
+    /* Paddings */
+    --padding-7xs: 6px;
+    --padding-base: 16px;
+    /* Border radiuses */
+    --br-3xs: 10px;
+    --br-5xl: 24px;
+    /* fonts */
+    --table-text-semi-bold: Inter;
+    --callout-bold: "SF Pro Text";
+    /* font sizes */
+    --table-text-semi-bold-size: 16px;
+    --title-mobile-size: 20px;
+    /* Colors */
+    --default-white: #fff;
+    --color-lightseagreen: #28bbad;
+    --color-darkslategray: #3f3f3f;
+    --warning-pop-colour: #ff9f1c;
+    --label-color-light-primary: #000;
+    /* Gaps */
+    --gap-3xs: 10px;
+    --gap-lgi: 19px;
+    --gap-smi: 13px;
+    /* Paddings */
+    --padding-base: 16px;
+    --padding-5xl: 24px;
+    /* Border radiuses */
+    --br-3xs: 10px;
+    --br-7xs: 6px;
+    --br-5xl: 24px;
+}

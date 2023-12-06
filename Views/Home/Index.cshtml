@@ -76,7 +76,7 @@
 <div>
     <div class="d-flex justify-content-between mb-2">
         <img src="img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
-        <div style="font-size: 2rem;"><i class="bi bi-cart2"></i></div>
+        <div style="font-size: 2rem;"><i id="cartIcon" class="bi bi-cart2"></i></div>
     </div>
 
     <div id="foodBanner" style="" class="mb-3">
@@ -247,7 +247,7 @@
 
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var anchors = document.querySelectorAll("li a")
 
         anchors.forEach(anchorTag => {
@@ -257,11 +257,16 @@
         var allProducts = document.querySelectorAll(".product")
 
         allProducts.forEach(product => {
-            product.addEventListener("click", () => {
-                location.href = "/Home/MenuDetail/"
-            })
-        })
-    })
+            product.addEventListener("click",
+                () => {
+                    location.href = "/Home/MenuDetail/"
+                });
+        });
+        //Cart Icon
+        document.getElementById("cartIcon").addEventListener("click", function() {
+            window.location.href = "cart";
+        });
+    });
 
     function transferActiveClass() {
         var activeElement = document.querySelector(".active")
@@ -269,6 +274,6 @@
         activeElement.classList.remove("active");
         this.classList.add("active");
     }
-
+    
 
 </script>

@@ -96,7 +96,7 @@
 <div>
     <div class="d-flex justify-content-between mb-4">
         <img src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
-        <div style="font-size: 2rem;"><i class="bi bi-cart2"></i></div>
+        <div style="font-size: 2rem;"><i id="cartIcon" class="bi bi-cart2"></i></div>
     </div>
 
     <div id="foodBanner" class="mb-4">
@@ -174,11 +174,18 @@
             }
         })
 
-        addQtyBtn.addEventListener("click", () => {
-            var qty = parseInt(productQty.textContent)
-            productQty.textContent = qty + 1;
-        })
+        addQtyBtn.addEventListener("click",
+            () => {
+                var qty = parseInt(productQty.textContent)
+                productQty.textContent = qty + 1;
+            });
+
+        document.getElementById("cartIcon").addEventListener("click", function() {
+            window.location.href = "cart";
+        });
     })
+
+
 
 </script>
 

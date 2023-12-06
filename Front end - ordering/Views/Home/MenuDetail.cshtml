@@ -223,6 +223,10 @@
 
 <script>
     $(document).ready(() => {
+        document.getElementById("cartIcon").addEventListener("click", function () {
+            window.location.href = "cart";
+        });
+
         var deductQtyBtn = document.querySelector(".minusBtn");
         var addQtyBtn = document.querySelector(".addBtn");
         var productQty = document.getElementById("productQty");

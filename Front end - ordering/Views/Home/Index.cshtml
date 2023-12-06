@@ -108,7 +108,7 @@
 <div>
     <div class="d-flex justify-content-between mb-2">
         <img src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
-        <div style="font-size: 2rem;"><i class="bi bi-cart2"></i></div>
+        <div style="font-size: 2rem;"><i class="bi bi-cart2" id="cartIcon"></i></div>
     </div>
 
     <div id="foodBanner" style="" class="mb-3">
@@ -665,6 +665,10 @@
 
 <script>
     $(document).ready(function () {
+        document.getElementById("cartIcon").addEventListener("click", function () {
+            window.location.href = "cart";
+        });
+
         var anchors = document.querySelectorAll("li a")
 
         anchors.forEach(anchorTag => {
@@ -691,6 +695,11 @@
 
         activeElement.classList.remove("active");
         this.classList.add("active");
+    }
+
+    function directToCheckout() {
+        //direct to checkout page
+        window.location.href = "/cart/";
     }
 
 

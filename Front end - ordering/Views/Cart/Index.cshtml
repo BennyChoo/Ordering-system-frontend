@@ -13,7 +13,7 @@
     <title>Cart</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/Front_end___ordering.styles.css" asp-append-version="true"/>
+    
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -102,10 +102,10 @@
     #cartList {
         background-color: rgb(248, 248, 248);
         border-radius: 20px;
-        margin-right: 4vw;
-        margin-left: 4vw;
+        margin-right: 2vw;
+        margin-left: 2vw;
         
-        width: 95%;
+        width: 98%;
         padding-right: 3vw;
         padding-left: 3vw;
         padding-top: 2vh;
@@ -138,7 +138,7 @@
         margin-left: 1vw;
         margin-top: 1vh;
         max-width: 211px;
-        width: 24vw;
+        width: 32vw;
     }
 
     .qtyContainer {
@@ -198,6 +198,7 @@
         margin-left: 5vw;
         max-width: 35px;
         width: 6vw;
+        height: 6vh;
     }
 
     .padLeft { padding-left: 1.5vw; }
@@ -298,6 +299,10 @@
         color: rgb(33, 37, 41);
     }
 
+    .moneyRow {
+        padding-top: 1vh;
+    }
+
     @@media screen and (max-width: 600px) {
         /* Your styles for screens less than 600px wide go here */
         /* For example: */
@@ -327,14 +332,14 @@
 
     <div id="cartList" class="">
         @*Single Row*@
-        <div class="d-flex mb-3 pb-2 w-100 whiteBg">
-            <div class="col-4 mr-2">
+        <div class="d-flex mb-3 pb-2 w-100 whiteBg" id="row1">
+            <div class="col-5 mr-2">
                 <img src="/img/frame-2351.png" alt="" class="cartPic"/>
             </div>
             <div class="col-7 padLeft">
                 <div class="d-flex flex-column justify-content-center pb-3 col-12" style="font-weight: 500;">
-                    <div>Mozarella sticks</div>
-                    <div style="color: rgb(40, 187, 173);">RM <span id="money1">9.90</span></div>
+                        <div class="moneyRow">Mozarella sticks</div>
+                        <div class="moneyRow" style="color: rgb(40, 187, 173);"><span hidden class="strikeT">RM <span id="strikeMoney1">12.90</span></span>RM <span id="money1">9.90</span></div>
                 </div>
                 <div class="d-flex">
                     <div class="qtyContainer col-6">
@@ -342,21 +347,21 @@
                         <span id="productQty" style="">1</span>
                         <div class="addBtn d-flex justify-content-center align-items-center pb-1">+</div>
                     </div>
-                    <div class="col-2">
-                        <img src="/img/trash3.svg" alt="" class="trashPic"/>
+                    <div class="col-2 d-flex">
+                            <img src="/img/trash3.svg" alt="" class="trashPic" id="tr1"/>
                     </div>
                 </div>
             </div>
         </div>
         @*Single Row*@
-        <div class="d-flex mb-3 pb-2 w-100 whiteBg">
-            <div class="col-4 mr-2">
+            <div class="d-flex mb-3 pb-2 w-100 whiteBg" id="row2">
+            <div class="col-5 mr-2">
                 <img src="/img/frame-23511.png" alt="" class="cartPic"/>
             </div>
             <div class="col-7 padLeft">
                 <div class="d-flex flex-column justify-content-center pb-3 col-12" style="font-weight: 500;">
-                    <div>Mango smoothies</div>
-                        <div style="color: rgb(40, 187, 173);"><span class="strikeT">RM 12.90</span>&nbsp;&nbsp;RM <span id="money2">10.30</span></div>
+                        <div class="moneyRow">Mango smoothies</div>
+                        <div class="moneyRow" style="color: rgb(40, 187, 173);"><span class="strikeT">RM <span id="strikeMoney2">12.90</span></span>&nbsp;&nbsp;RM <span id="money2">10.30</span></div>
                 </div>
                 <div class="d-flex">
                     <div class="qtyContainer col-6">
@@ -364,21 +369,21 @@
                         <span id="productQty2" style="">1</span>
                         <div class="addBtn addBtn2 d-flex justify-content-center align-items-center pb-1">+</div>
                     </div>
-                    <div class="col-2">
-                        <img src="/img/trash3.svg" alt="" class="trashPic"/>
+                        <div class="col-2  d-flex">
+                            <img src="/img/trash3.svg" alt="" class="trashPic" id="tr2"/>
                     </div>
                 </div>
             </div>
         </div>
         @*Single Row*@
-        <div class="d-flex mb-3 pb-2 w-100 whiteBg">
-            <div class="col-4 mr-2">
+            <div class="d-flex mb-3 pb-2 w-100 whiteBg" id="row3">
+            <div class="col-5 mr-2">
                     <img src="/img/frame-23512.png" alt="" class="cartPic" />
             </div>
             <div class="col-7 padLeft">
                 <div class="d-flex flex-column justify-content-center pb-3 col-12" style="font-weight: 500;">
-                    <div>Mozarella sticks</div>
-                        <div style="color: rgb(40, 187, 173);"><span class="strikeT">RM 12.90</span>&nbsp;&nbsp;RM <span id="money3">10.30</span></div>
+                        <div class="moneyRow">Chicken rice set A</div>
+                        <div class="moneyRow" style="color: rgb(40, 187, 173);"><span class="strikeT">RM <span id="strikeMoney3">12.90</span></span>&nbsp;&nbsp;RM <span id="money3">10.30</span></div>
                 </div>
                 <div class="d-flex">
                     <div class="qtyContainer col-6">
@@ -386,8 +391,8 @@
                         <span id="productQty3" style="">1</span>
                         <div class="addBtn addBtn3 d-flex justify-content-center align-items-center pb-1">+</div>
                     </div>
-                    <div class="col-2">
-                        <img src="/img/trash3.svg" alt="" class="trashPic"/>
+                        <div class="col-2  d-flex">
+                            <img src="/img/trash3.svg" alt="" class="trashPic" id="tr3"/>
                     </div>
                 </div>
             </div>
@@ -399,22 +404,22 @@
             <div class="fw-bold sumText">Summary</div>
             <div class="summary-item">
                 <span>Subtotal</span>
-                <span class="align-right" id="subtotal">RM 35.70</span>
+                    <span class="align-right" id="">RM <span id="subtotal">35.70</span></span>
             </div>
             <div class="summary-item">
                 <span>Discount sales</span>
-                <span class="align-right blueFont" id="discountSales">RM 5.20</span>
+                    <span class="align-right blueFont" id="">RM <span id="discountSales">5.20</span></span>
             </div>
             <div class="summary-item">
                 <span>Tax</span>
-                <span class="align-right" id="tax">RM 2.20</span>
+                    <span class="align-right" id="">RM <span id="tax">2.20</span></span>
             </div>
             <div class="summary-item pt-2 pb-2">
                 <div class="line-div"></div>
             </div>
             <div class="summary-item orangeT">
                 <span>Total</span>
-                <span class="align-right" id="total">RM 32.70</span>
+                    <span class="align-right" id="">RM <span id="total">2.20</span></span>
             </div>
         </div>
     </div>
@@ -435,8 +440,8 @@
     @* below is the buttons block *@
     <div id="buttonDiv" class="pt-5">
         <div class="summary">
-                <button class="b1 fw-bold">Place Order</button>
-                <button class="b2 mt-4 fw-bold">Add more items</button>
+                <button id="placeOrder" class="b1 fw-bold" onclick="placeOrder()">Place Order</button>
+                <button id="addItem" class="b2 mt-4 fw-bold" onclick="addItem()">Add more items</button>
         </div>
     </div>
 
@@ -450,6 +455,21 @@
 <script>
     $(document).ready(() => {
 
+        $('[id^="tr"]').click(function () {
+            var idNumber = $(this).attr('id').replace('tr', ''); // Extract number from button ID
+            console.log(idNumber);
+            var divId = '#row' + idNumber; // Combine 'row' with the number
+            var divId2 = '#money' + idNumber;
+            var divId3 = '#strikeMoney' + idNumber;
+            console.log(divId);
+            $(divId2).text("0");
+            $(divId3).text("0");
+            countNewTaxTotal();
+            $(divId).hide(); 
+            $(divId).removeClass('d-flex');
+        });
+
+        /* Horrible code, should loop id and what not but it's a todo for now. */
         var deductQtyBtn = document.querySelector(".minusBtn");
         var addQtyBtn = document.querySelector(".addBtn");
         var productQty = document.getElementById("productQty");
@@ -460,34 +480,44 @@
 
                 if (qty > 0) {
                     productQty.textContent = qty - 1;
+                    $('#money1').text((parseFloat($('#money1').text()) - 9.90).toFixed(2));
                 }
+                countNewTaxTotal();
             });
 
         addQtyBtn.addEventListener("click",
             () => {
                 var qty = parseInt(productQty.textContent);
                 productQty.textContent = qty + 1;
+                $('#money1').text((parseFloat($('#money1').text()) + 9.90).toFixed(2));
+                countNewTaxTotal();
             });
 
-        /* Horrible code, should loop id and what not but it's a todo for now. */
-            var deductQtyBtn2 = document.querySelector(".minusBtn2");
-            var addQtyBtn2 = document.querySelector(".addBtn2");
-            var productQty2 = document.getElementById("productQty2");
+        
+        var deductQtyBtn2 = document.querySelector(".minusBtn2");
+        var addQtyBtn2 = document.querySelector(".addBtn2");
+        var productQty2 = document.getElementById("productQty2");
 
-            deductQtyBtn2.addEventListener("click",
-                () => {
-                    var qty = parseInt(productQty2.textContent);
+        deductQtyBtn2.addEventListener("click",
+            () => {
+                var qty = parseInt(productQty2.textContent);
 
-                    if (qty > 0) {
-                        productQty2.textContent = qty - 1;
-                    }
-                });
+                if (qty > 0) {
+                    productQty2.textContent = qty - 1;
+                        $('#money2').text((parseFloat($('#money2').text()) - 10.30).toFixed(2));
+                        $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) - 12.90).toFixed(2));
+                        countNewTaxTotal();
+                }
+            });
 
-            addQtyBtn2.addEventListener("click",
-                () => {
-                    var qty = parseInt(productQty2.textContent);
-                    productQty2.textContent = qty + 1;
-                });
+        addQtyBtn2.addEventListener("click",
+            () => {
+                var qty = parseInt(productQty2.textContent);
+                productQty2.textContent = qty + 1;
+                    $('#money2').text((parseFloat($('#money2').text()) + 10.30).toFixed(2));
+                    $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) + 12.90).toFixed(2));
+                    countNewTaxTotal();
+            });
 
         var deductQtyBtn3 = document.querySelector(".minusBtn3");
         var addQtyBtn3 = document.querySelector(".addBtn3");
@@ -499,6 +529,9 @@
 
                 if (qty > 0) {
                     productQty3.textContent = qty - 1;
+                        $('#money3').text((parseFloat($('#money3').text()) - 10.30).toFixed(2));
+                        $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) - 12.90).toFixed(2));
+                        countNewTaxTotal();
                 }
             });
 
@@ -506,11 +539,57 @@
             () => {
                 var qty = parseInt(productQty3.textContent);
                 productQty3.textContent = qty + 1;
+                    $('#money3').text((parseFloat($('#money3').text()) + 10.30).toFixed(2));
+                    $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) + 12.90).toFixed(2));
+                    countNewTaxTotal();
             });
 
         /* End horrible code */
 
-    })
+    });
+
+
+
+        function placeOrder() {
+            window.location.href = "/cart/OrderConfirmation";
+        };
+
+        function addItem() {
+            window.location.href = "/";
+        };
+
+    function countNewTaxTotal() {
+        var total = 0;
+        var noDisTotal = 0;
+        var discount = 0;
+        var tax = 0;
+
+            total =
+            parseFloat($('#money1').text()) +
+            parseFloat($('#strikeMoney2').text()) +
+            parseFloat($('#strikeMoney3').text());
+
+            noDisTotal =
+                parseFloat($('#money1').text()) +
+                parseFloat($('#strikeMoney2').text()) +
+                parseFloat($('#strikeMoney3').text());
+
+        discount =
+            parseFloat($('#strikeMoney2').text()) +
+            parseFloat($('#strikeMoney3').text()) -
+                parseFloat($('#money2').text()) -
+            parseFloat($('#money3').text());
+
+        tax = total * 0.06;
+
+        total = total + tax;
+
+            $('#subtotal').text(parseFloat(noDisTotal).toFixed(2));
+            $('#discountSales').text(parseFloat(discount).toFixed(2));
+            $('#tax').text(parseFloat(tax).toFixed(2));
+            $('#total').text(parseFloat(total).toFixed(2));
+    };
+
 </script>
 
 </body>

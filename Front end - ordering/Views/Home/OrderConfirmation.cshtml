@@ -1,0 +1,205 @@
+﻿@{
+    Layout = "~/views/shared/_Layout.cshtml";
+}
+
+<style>
+    .check-circle-parent{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 18px;
+        text-align: center;
+    }
+
+    .check-circle-icon {
+
+    }
+
+    .your-order-has {
+        position: relative;
+        font-weight: 600;
+        display: inline-block;
+        width: 231px;
+        font-size: 1.5rem;
+        color: rgb(131,128,129);
+    }
+
+    .sit-back-relax {
+        position: relative;
+        display: inline-block;
+        width: 279px;
+        color: rgb(141,141,141);
+    }
+
+    #line {
+        border-top: 1px solid rgb(131,128,129);
+        width: 90%;
+        margin: 1.5rem;
+        /* position: relative;
+        top: 1.5rem;
+        left: 1.5rem; */
+    }
+
+    .wrapper {
+        border-radius: 15px;
+        border: 1px solid rgb(239 172 80);
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(239 172 80);
+    }
+    
+    .productContainer {
+        display: flex;
+        padding: 0 1.3rem;
+        /* justify-content: space-around; */
+        /* gap: 40px; */
+        align-items: center;
+    }
+
+    .productDetailParent{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 1.4rem;
+        margin-right: 3.5rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        width: 135px;
+        line-height: 1.7rem;
+    }
+
+    .productName{
+        /* width: max-content; */
+    }
+
+    .productDescription {
+        color: rgb(141,141,141);
+    }
+
+    .productPrice{
+        color: #48bdb1;
+    }
+
+    .productCutPrice {
+        text-decoration: line-through;
+        color: rgb(124,122,121);
+    }
+
+    #goHomePage {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 1.2rem;
+        top: 2rem;
+        border-radius: 7px;
+        padding: 10px 0;
+        font-size: 1.1rem;
+        color: white;
+        background-color: #48bdb1;
+        border: none;
+    }
+</style>
+
+<div>
+    <div class="d-flex justify-content-between mb-4">
+        <img src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
+    </div>
+
+
+    <div class="check-circle-parent">
+        <img class="check-circle-icon" src="/img/check-circle.svg" alt="success" />
+
+        <div class="your-order-has">
+            Your order has been successfully placed!
+        </div>
+
+        <div class="sit-back-relax">
+            Sit back, relax, and get ready to savor the flavors. We appreciate
+            your patience and can't wait for you to enjoy the culinary
+            delights coming your way.
+        </div>
+    </div>
+
+    <div id="line"></div>
+
+    <div class="d-flex justify-content-around mb-5" style="font-size: 1.2rem;">
+        <div class="d-flex flex-column align-items-center">
+            <div>Table</div>
+            <div style="color: #FFB856; font-weight: 500;">28</div>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <div>Order ID</div>
+            <div style="color: #FFB856; font-weight: 500;">#1023</div>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <div>Payment method</div>
+            <div style="color: #FFB856; font-weight: 500;">Cash</div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="productContainer mb-5">
+            <img src="/img/frame-2351.png" alt="mozarella"/>
+            <div class="productDetailParent">
+                <div class="productName">Mozarella sticks</div>
+                <div class="productPrice">RM 9.90</div>
+            </div>
+            <div class="wrapper">
+                x1
+            </div>
+        </div>
+
+        <div class="productContainer mb-5">
+            <img src="/img/frame-23511.png" alt="mozarella" />
+            <div class="productDetailParent">
+                <div class="productName">Mango smoothies</div>
+                <div class="d-flex justify-content-between">
+                    <div class="productCutPrice">RM 12.90</div>
+                    <div class="productPrice">RM 10.30</div>
+                </div>
+            </div>
+            <div class="wrapper">
+                x1
+            </div>
+        </div>
+
+        <div class="productContainer">
+            <img src="/img/frame-23512.png" alt="mozarella" />
+            <div class="productDetailParent">
+                <div class="productName">Chicken rice set A</div>
+                <div class="productDescription">Extra soy sauce</div>
+                <div class="productDescription">Chicken breast</div>
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="productCutPrice">RM 12.90</div>
+                    <div class="productPrice">RM 10.30</div>
+                </div>
+            </div>
+            <div class="wrapper">
+                x1
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <button id="goHomePage">Go to Homepage</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        var goHomeBtn = document.getElementById("goHomePage");
+
+        goHomeBtn.addEventListener("click", directHomePage)
+    })
+
+    function directHomePage() {
+        window.location.href = "/";
+    }
+
+</script>

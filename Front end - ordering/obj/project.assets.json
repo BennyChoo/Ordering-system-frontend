@@ -3843,24 +3843,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cheon\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\KVD\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repo\\OrderFrontEnd\\Front end - ordering\\Front end - ordering\\Front end - ordering.csproj",
+      "projectUniqueName": "C:\\Users\\KVD\\source\\Repos\\Ordering-system-frontend\\Front end - ordering\\Front end - ordering.csproj",
       "projectName": "Front end - ordering",
-      "projectPath": "D:\\Repo\\OrderFrontEnd\\Front end - ordering\\Front end - ordering\\Front end - ordering.csproj",
-      "packagesPath": "C:\\Users\\cheon\\.nuget\\packages\\",
-      "outputPath": "D:\\Repo\\OrderFrontEnd\\Front end - ordering\\Front end - ordering\\obj\\",
+      "projectPath": "C:\\Users\\KVD\\source\\Repos\\Ordering-system-frontend\\Front end - ordering\\Front end - ordering.csproj",
+      "packagesPath": "C:\\Users\\KVD\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\KVD\\source\\Repos\\Ordering-system-frontend\\Front end - ordering\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\cheon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\KVD\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3868,8 +3863,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
-        "D:\\Repo\\LocalPackage": {},
+        "C:\\Users\\KVD\\source\\LocalPackage": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3942,7 +3936,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

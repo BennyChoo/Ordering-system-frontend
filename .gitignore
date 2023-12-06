@@ -1,0 +1,26 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/bin/Debug/net7.0
+/obj/Debug/net7.0/ref/Front end - ordering.dll
+/obj/Debug/net7.0/refint/Front end - ordering.dll
+/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs
+/obj/Debug/net7.0/apphost.exe
+/obj/Debug/net7.0/Front end - ordering.assets.cache
+/obj/Debug/net7.0/Front end - ordering.csproj.AssemblyReference.cache
+/obj/Debug/net7.0/Front end - ordering.csproj.CoreCompileInputs.cache
+/obj/Debug/net7.0/Front end - ordering.csproj.FileListAbsolute.txt
+/obj/Debug/net7.0/Front end - ordering.dll
+/obj/Debug/net7.0/Front end - ordering.GeneratedMSBuildEditorConfig.editorconfig
+/obj/Debug/net7.0/Front end - ordering.genruntimeconfig.cache
+/obj/Debug/net7.0/Front end - ordering.pdb
+/obj/Debug/net7.0/project.razor.vs.json
+/obj/Debug/net7.0/staticwebassets/msbuild.Front end - ordering.Microsoft.AspNetCore.StaticWebAssets.props
+/obj/Debug/net7.0/staticwebassets.build.json
+/obj/Debug/net7.0/staticwebassets.development.json
+/obj/Debug/net7.0/staticwebassets.pack.json
+/obj/Front end - ordering.csproj.nuget.dgspec.json
+/obj/Front end - ordering.csproj.nuget.g.props
+/obj/project.assets.json
+/obj/project.nuget.cache

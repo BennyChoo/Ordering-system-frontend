@@ -51,7 +51,7 @@
         font-size: 2rem;
     }
 
-    .addBtn, .addOnsBtn {
+    .addBtn {
         border: none;
         border-radius: 40px;
         background-color: black;
@@ -60,7 +60,6 @@
         width: 30px;
         font-size: 2rem;
     }
-
 
     #qtyAndCheckOutContainer{
         padding-left: 2rem;
@@ -88,44 +87,7 @@
         font-size: 1.2rem;
         font-weight: 600;
         border-radius: 10px;
-        border: 1px solid rgb(255,159,28);
-    }
-
-    #cartContainer{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    .wrapper {
-        border-radius: 10.31px;
-        background-color: var(--warning-pop-colour);
-        height: 20.63px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 6.875px;
-        box-sizing: border-box;
-    }
-
-
-    .addOnsContainer {
-        display: flex;
-        overflow-x: auto;
-        /* gap: 3rem; */
-        white-space: nowrap;
-    }
-
-    #closeDetailBtn {
-        border-radius: 14px;
-        color: white;
-        position: relative;
-        top: -16.5rem;
-        left: 25.5rem;
-        border: 2px solid white;
-        background-color: transparent;
+        border: 2px solid rgb(255,159,28);
     }
 </style>
 
@@ -134,10 +96,7 @@
 <div>
     <div class="d-flex justify-content-between mb-4">
         <img src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
-        <div id="cartContainer">
-            <div id="cartQty" class="wrapper mt-3 text-white" hidden>0</div>
-            <div class="" style="font-size: 2rem;"><i class="bi bi-cart2"></i></div>
-        </div>
+        <div style="font-size: 2rem;"><i id="cartIcon" class="bi bi-cart2"></i></div>
     </div>
 
     <div id="foodBanner" class="mb-4">
@@ -146,7 +105,6 @@
                 <img src="/img/frame-2360.png" alt="" class="w-100"/>
             </div>
         </div>
-        <button id="closeDetailBtn">X</button>
     </div>
 
 
@@ -178,38 +136,23 @@
             </div>
         </div>
         
-        <div id="proceedPayment" class="d-flex justify-content-center mb-4">
+        <div class="d-flex justify-content-center mb-4">
             <div id="proceedPaymentContainer" class="d-flex justify-content-center align-items-center">
                 <div class="pe-3" style="font-size: 1.8rem; padding-bottom: 8px;"><i class="bi bi-cart2"></i></div>
                 <div>Proceed to payment</div>
             </div>
-@*             <div class="d-flex justify-content-center align-items-center">
-                <button><i class="bi bi-cart2"></i>Proceed to payment</button>
-            </div> *@
         </div>
     </div>
 
     <div class="pt-3" style="background-color: rgb(248,248,248); padding-left: 2rem; width: 106%; position: relative; left: -12px;">
         <div class="mb-3" style="font-size: 1.2rem; color: rgb(40,187,173); font-weight: 500;">You may also like</div>
-
-        <div class="addOnsContainer">
-            <div class="d-flex pb-5 pe-5">
-                <img src="/img/frame-2364.png" alt="" />
-                <div class="ps-4 d-flex flex-column justify-content-center pb-3" style="font-size: 1.2rem; font-weight: 500; line-height: 30px;">
-                    <div>Samosa</div>
-                    <div style="color: rgb(40,187,173);">RM 8.50</div>
-                </div>
-                <div class="addOnsBtn d-flex justify-content-center align-items-center pb-1" style="align-self: flex-end; margin-left: 1.8rem;">+</div>
+        <div class="d-flex pb-5">
+            <img src="/img/frame-2364.png" alt=""/>
+            <div class="ps-4 d-flex flex-column justify-content-center pb-3" style="font-size: 1.2rem; font-weight: 500; line-height: 30px;">
+                <div>Samosa</div>
+                <div style="color: rgb(40,187,173);">RM 8.50</div>
             </div>
-            <div class="d-flex pb-5 pe-5">
-                <img src="/img/frame-2364.png" alt="" />
-                <div class="ps-4 d-flex flex-column justify-content-center pb-3" style="font-size: 1.2rem; font-weight: 500; line-height: 30px;">
-                    <div>Samosa</div>
-                    <div style="color: rgb(40,187,173);">RM 8.50</div>
-                </div>
-                <div class="addOnsBtn d-flex justify-content-center align-items-center pb-1" style="align-self: flex-end; margin-left: 1.8rem;">+</div>
-            </div>
-            
+            <div class="addBtn d-flex justify-content-center align-items-center pb-1" style="align-self: flex-end; margin-left: 1.8rem;">+</div>
         </div>
     </div>
 
@@ -223,79 +166,26 @@
         var addQtyBtn = document.querySelector(".addBtn")
         var productQty = document.getElementById("productQty")
 
-        var cartQtyEl = document.getElementById("cartQty");
-
-        var cartQty = 0;
-
-        var addOrderBtn = document.getElementById("addToOrder");
-
-        var addOnsBtn = document.querySelectorAll(".addOnsBtn");
-
-        var closeDetailBtn = document.getElementById("closeDetailBtn");
-
         deductQtyBtn.addEventListener("click", () => {
             var qty = parseInt(productQty.textContent)
 
-            if (qty > 0) {
+            if (qty > 0){
                 productQty.textContent = qty - 1;
-            }
-
-            if (cartQty > 0) {
-                cartQty -= 1;
-                
-            }
-
-        });
-
-        addQtyBtn.addEventListener("click", () => {
-            var qty = parseInt(productQty.textContent)
-            productQty.textContent = qty + 1;
-
-            // var cartQty = parseInt(cartQtyEl.textContent)
-            cartQty += 1;
-
-            // cartQtyEl.textContent = newCartQty
-        });
-
-        addOrderBtn.addEventListener("click", () => {
-            // console.log(cartQty)
-            if (cartQty > 0) {
-                var newCartQty = parseInt(cartQtyEl.textContent) + cartQty;
-                cartQtyEl.textContent = newCartQty;
-                cartQtyEl.hidden = false;
-
-                var proceedPayment = document.getElementById("proceedPaymentContainer")
-
-                proceedPayment.style.backgroundColor = "white";
-                proceedPayment.addEventListener("click", directToCheckout)
-
-                //after adding the product qty to cart
-                //reset the product qty
-                productQty.textContent = 0;
-                cartQty = 0;
             }
         })
 
-        addOnsBtn.forEach(btn => {
-            btn.addEventListener("click", () => {
-                var newCartQty = parseInt(cartQtyEl.textContent) + 1;
-                cartQtyEl.textContent = newCartQty;
-                cartQtyEl.hidden = false;
+        addQtyBtn.addEventListener("click",
+            () => {
+                var qty = parseInt(productQty.textContent)
+                productQty.textContent = qty + 1;
+            });
 
-                var proceedPayment = document.getElementById("proceedPaymentContainer")
-
-                proceedPayment.style.backgroundColor = "white";
-                proceedPayment.addEventListener("click", directToCheckout)
-            })
+        document.getElementById("cartIcon").addEventListener("click", function() {
+            window.location.href = "cart";
         });
-
-        closeDetailBtn.addEventListener("click", directToCheckout)
     })
 
-    function directToCheckout() {
-        //direct to checkout page
-        location.href = "/"
-    }
+
 
 </script>
 

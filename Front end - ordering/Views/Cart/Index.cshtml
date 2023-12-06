@@ -162,6 +162,21 @@
         padding-right: 3vw;
     }
 
+    @@media screen and (max-width: 600px) {
+    /* Your styles for screens less than 600px wide go here */
+    /* For example: */
+    body {
+       font-size: 1.5rem;
+    }
+
+    /* Adjust other elements as needed */
+    .container {
+        width: 90%;
+    }
+
+    /* Any other styles specific to smaller screens */
+    }
+
 
 </style>
 
@@ -177,8 +192,8 @@
     </div>
 
     <div id="cartList" class="pt-2 container">
-            <div class="d-flex pb-5 w-100 whiteBg">
-                <div class=" col-4">
+            <div class="d-flex mb-2 w-100 whiteBg">
+                <div class="col-4">
                     <img src="/img/frame-2364.png" alt="" class="cartPic" />
                 </div>
                 <div class="col-8">

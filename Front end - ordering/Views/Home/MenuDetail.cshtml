@@ -1,4 +1,9 @@
-﻿<style>
+﻿@{
+    Layout = "~/views/shared/_Layout.cshtml";
+}
+
+
+<style>
     .container {
         overflow-x: hidden;
     }
@@ -218,9 +223,9 @@
 
 <script>
     $(document).ready(() => {
-        var deductQtyBtn = document.querySelector(".minusBtn")
-        var addQtyBtn = document.querySelector(".addBtn")
-        var productQty = document.getElementById("productQty")
+        var deductQtyBtn = document.querySelector(".minusBtn");
+        var addQtyBtn = document.querySelector(".addBtn");
+        var productQty = document.getElementById("productQty");
 
         var cartQtyEl = document.getElementById("cartQty");
 
@@ -266,17 +271,17 @@
                     cartQtyEl.textContent = newCartQty;
                     cartQtyEl.hidden = false;
 
-                    var proceedPayment = document.getElementById("proceedPaymentContainer")
+                    var proceedPayment = document.getElementById("proceedPaymentContainer");
 
                     proceedPayment.style.backgroundColor = "white";
-                    proceedPayment.addEventListener("click", directToCheckout)
+                    proceedPayment.addEventListener("click", directToCheckout);
 
                     //after adding the product qty to cart
                     //reset the product qty
                     productQty.textContent = 0;
                     cartQty = 0;
                 }
-            })
+            });
 
         addOnsBtn.forEach(btn => {
             btn.addEventListener("click",
@@ -285,25 +290,33 @@
                     cartQtyEl.textContent = newCartQty;
                     cartQtyEl.hidden = false;
 
-                    var proceedPayment = document.getElementById("proceedPaymentContainer")
+                    var proceedPayment = document.getElementById("proceedPaymentContainer");
 
                     proceedPayment.style.backgroundColor = "white";
-                    proceedPayment.addEventListener("click", directToCheckout)
+                    proceedPayment.addEventListener("click", directToCheckout);
                 });
         });
 
         //Cart Icon
         document.getElementById("cartIcon").addEventListener("click",
             function() {
-                window.location.href = "cart";
+                var cartQty = parseInt(cartQtyEl.textContent);
+
+                if (cartQty > 0) {
+                    window.location.href = "/cart/";
+                }
             });
 
-        closeDetailBtn.addEventListener("click", directToCheckout);
+
+        closeDetailBtn.addEventListener("click", () => {
+            window.location.href = "/";
+        });
+
     });
 
     function directToCheckout() {
         //direct to checkout page
-        location.href = "/"
+        window.location.href = "/cart/";
     }
 
 

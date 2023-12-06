@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "~/views/shared/_Layout.cshtml";
 }
 
 <style>
@@ -65,6 +65,15 @@
 
     a:hover {
         color: rgb(40,187,173);
+    }
+
+    .productName {
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+
+    .productDescription {
+        color: rgb(108,117,125);
         line-height: 18px;
     }
 
@@ -98,8 +107,8 @@
 
 <div>
     <div class="d-flex justify-content-between mb-2">
-        <img src="img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
-        <div style="font-size: 2rem;"><i class="bi bi-cart2" id="cartIcon"></i></div>
+        <img src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
+        <div style="font-size: 2rem;"><i class="bi bi-cart2"></i></div>
     </div>
 
     <div id="foodBanner" style="" class="mb-3">
@@ -127,14 +136,146 @@
 
         <div id="popular">
             <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
-                <div class="productPrice">RM 9.90</div>
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Mozarella sticks</div>
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+
+            </div>
+
+            <div class="productContentsLine"></div>
+
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Mozarella sticks</div>
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Mozarella sticks</div>
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+        </div>
+
+
+        <div id="appetizers">
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Mushroom soup</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Mushroom soup</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Mushroom soup</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+        </div>
+
+
+
+        <div id="mainDishes">
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Spaghetti Aglio Olio</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Spaghetti Aglio Olio</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Spaghetti Aglio Olio</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
 
 </div>
 
@@ -523,7 +664,7 @@
 </div> *@
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var anchors = document.querySelectorAll("li a")
 
         anchors.forEach(anchorTag => {
@@ -533,23 +674,17 @@
         var allProducts = document.querySelectorAll(".product")
 
         allProducts.forEach(product => {
-            product.addEventListener("click",
-                () => {
-                    location.href = "/Home/MenuDetail/"
-                })
+            product.addEventListener("click", () => {
+                location.href = "/Home/MenuDetail/"
+            })
         })
 
         const navBar = document.querySelector('#navBar ul');
 
-        navBar.addEventListener('scroll',
-            () => {
-                document.body.style.overflowX = navBar.scrollWidth > navBar.clientWidth ? 'scroll' : 'hidden';
-            });
-        //Cart Icon
-        document.getElementById("cartIcon").addEventListener("click", function () {
-            window.location.href = "cart";
+        navBar.addEventListener('scroll', () => {
+            document.body.style.overflowX = navBar.scrollWidth > navBar.clientWidth ? 'scroll' : 'hidden';
         });
-    });
+    })
 
     function transferActiveClass() {
         var activeElement = document.querySelector(".active")
@@ -559,3 +694,4 @@
     }
 
 
+</script>

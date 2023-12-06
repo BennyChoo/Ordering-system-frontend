@@ -224,7 +224,7 @@
 <script>
     $(document).ready(() => {
         document.getElementById("cartIcon").addEventListener("click", function () {
-            window.location.href = "cart";
+            window.location.href = window.location.origin + '/Cart';
         });
 
         var deductQtyBtn = document.querySelector(".minusBtn");
@@ -307,7 +307,7 @@
                 var cartQty = parseInt(cartQtyEl.textContent);
 
                 if (cartQty > 0) {
-                    window.location.href = "/cart/";
+                    window.location.href = window.location.origin + '/Cart';
                 }
             });
 
@@ -320,7 +320,7 @@
 
     function directToCheckout() {
         //direct to checkout page
-        window.location.href = "/cart/";
+        window.location.href = window.location.origin + '/Cart';
     }
 
 

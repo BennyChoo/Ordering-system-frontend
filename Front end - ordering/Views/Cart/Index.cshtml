@@ -597,8 +597,9 @@
         return roundedTax;
     }
 
+    var roundedNumber;
     function customRound(number) {
-        let roundedNumber;
+        
         const decimal = number * 100 % 10; // Get the last digit after the decimal point
 
         if (decimal <= 2) {

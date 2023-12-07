@@ -65,3 +65,9 @@
 /Front end - ordering/obj/Front end - ordering.csproj.nuget.g.props
 /Front end - ordering/obj/project.assets.json
 /Front end - ordering/obj/project.nuget.cache
+/.vs
+/Front end - ordering/bin/Release/net7.0
+/Front end - ordering/obj/Release/net7.0
+/Front end - ordering/Front end - ordering.csproj.user
+/Front end - ordering/Properties/PublishProfiles/FolderProfile.pubxml
+/Front end - ordering/Properties/PublishProfiles/FolderProfile.pubxml.user

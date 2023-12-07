@@ -306,7 +306,7 @@
 <body class="">
 <div class="d-flex justify-content-between mb-4">
     
-    <img src="img/logo.svg" alt="logo" style="font-size: 2rem; max-width: 121px; padding-left: 1vw; padding-top: 0.5rem; width: 120px;"/>
+    <img id="logoImg" src="img/logo.svg" alt="logo" style="font-size: 2rem; max-width: 121px; padding-left: 1vw; padding-top: 0.5rem; width: 120px;"/>
         @*I like 39vw with max width of 220px*@
     @*<div style="font-size: 2rem;"><i class="bi bi-cart2"></i></div>*@
 </div>
@@ -539,6 +539,12 @@
                 $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) + 12.90).toFixed(2));
                 countNewTaxTotal();
             });
+
+        var logo = document.getElementById("logoImg");
+        logo.addEventListener("click", () => {
+            window.location.href = "/";
+        });
+
 
         /* End horrible code */
 

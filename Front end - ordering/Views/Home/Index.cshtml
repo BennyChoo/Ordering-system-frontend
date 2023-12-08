@@ -232,8 +232,8 @@
             <li><a class="active" href="#popular">Most popular</a></li>
             <li><a href="#appetizers">Appetizers</a></li>
             <li><a href="#mainDishes">Main dishes</a></li>
-            <li><a href="#mainDishes">Pasta</a></li>
-            <li><a href="#mainDishes">Sandwiches</a></li>
+            <li><a href="#pasta">Pasta</a></li>
+            <li><a href="#sandwiches">Sandwiches</a></li>
         </ul>
     </div> 
 
@@ -241,7 +241,7 @@
 
     <div id="productContents">
 
-        <div id="popular">
+        <div id="popular" class="navSection">
             <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
@@ -286,7 +286,7 @@
         </div>
 
 
-        <div id="appetizers">
+        <div id="appetizers" class="navSection">
             <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
@@ -335,7 +335,53 @@
 
 
 
-        <div id="mainDishes">
+        <div id="mainDishes" class="navSection">
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Fish n Chips</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Fish n Chips</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Fish n Chips</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pasta" class="navSection">
             <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
@@ -381,7 +427,51 @@
             </div>
         </div>
 
+        <div id="sandwiches" class="navSection">
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Sandwiches Egg Mayo</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Sandwiches Egg Mayo</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+            <div class="productContentsLine"></div>
+
+            <div class="row mb-5 product">
+                <div class="col-4">
+                    <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
+
+                </div>
+                <div class="col-8" id="productWordings">
+                    <div class="productName pb-2">Sandwiches Egg Mayo</div>
+
+                    <div class="productDescription pb-3">Golden and irresistibly crispy on the outside, our Mozarella Sticks are a delightful burst of cheesy goodness.</div>
+
+                    <div class="productPrice">RM 9.90</div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -790,11 +880,14 @@
             })
         })
 
-        const navBar = document.querySelector('#navBar ul');
+        // const navBar = document.querySelector('#navBar ul');
 
-        navBar.addEventListener('scroll', () => {
-            document.body.style.overflowX = navBar.scrollWidth > navBar.clientWidth ? 'scroll' : 'hidden';
-        });
+        // navBar.addEventListener('scroll', () => {
+        //     document.body.style.overflowX = navBar.scrollWidth > navBar.clientWidth ? 'scroll' : 'hidden';
+        // });
+
+
+
     })
 
     function transferActiveClass() {

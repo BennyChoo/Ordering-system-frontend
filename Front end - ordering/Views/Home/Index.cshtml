@@ -6,30 +6,40 @@
     html {
         overflow: scroll;
         overflow-x: hidden;
-        scroll-behavior:auto !important;
+        scroll-behavior: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+        overflow: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
     }
 
     .container {
         overflow: scroll;
         overflow-x: hidden;
+        overflow-x: auto;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
         /* scroll-behavior: auto; */
         /*         overflow-x: scroll;
         overflow-y: scroll; */
         /* overflow: -moz-hidden-unscrollable; */
     }
 
-    .test {
-        overflow: scroll;
-        overflow-x: hidden;
-    }
+
 
     /* Hide scrollbar for Chrome, Safari and Opera */
 
-/*     .container::-webkit-scrollbar {
+    .container::-webkit-scrollbar {
         display: none;
-    } */
+        width: 0; /* Remove scrollbar space */
+        background: transparent; /* Optional: just make scrollbar invisible */
+    }
 
-/*     .test::-webkit-scrollbar {
+/*     body::-webkit-scrollbar {
         display: none;
     } */
 
@@ -43,21 +53,32 @@
         background: transparent; /* Optional: just make scrollbar invisible */
     }
 
+    body::-webkit-scrollbar-thumb {
+        display: none; /* Safari specific hide */
+    }
+
+    .container::-webkit-scrollbar-thumb {
+        display: none; /* Safari specific hide */
+    }
+
 
     /* Hide scrollbar for IE, Edge and Firefox */
     #navBar {
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
+        scrollbar-color: transparent transparent;
     }
 
-    .test {
+    body {
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
+        scrollbar-color: transparent transparent;
     }
 
     .container {
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
+        scrollbar-color: transparent transparent;
     }
 
     #navBar {
@@ -75,7 +96,7 @@
         /* width: 100%; */
         z-index: 9;
         left: 50%;
-        /* top: 0%; */
+        top: 0%;
         transform: translateX(-50%);
         width: 100%;
         background: white;
@@ -160,29 +181,32 @@
 
     #productContents {
         padding: 0 10px;
-        position: relative;
-        top: 27rem;
+        padding-top: 27rem;
+        /* position: relative;
+        top: 27rem; */
+    }
+
+    .navSection {
+        /* margin-top: 27rem; */
     }
 
     @@media screen and (max-width: 431px) and (max-height: 933px) {
         #productContents {
-            top: 28rem;
+            padding-top: 28rem;
         }
     }
 
     @@media screen and (max-width: 391px) and (max-height: 845px) {
         #productContents {
-            top: 26.5rem;
+            padding-top: 26.5rem;
         }
     }
 
     @@media screen and (max-width: 376px) and (max-height: 668px){
         #productContents {
-            top: 26rem;
+            padding-top: 26rem;
         }
     }
-
-
 
     .productContentsLine {
         border-bottom: 1px solid rgb(200,200,200);
@@ -191,7 +215,6 @@
     }
 
 </style>
-
 <div>
     <div id="fixTop">
         <div class="d-flex justify-content-between mb-2">
@@ -207,48 +230,14 @@
             </div>
         </div>
 
-        @* <div id="navBar" class="mb-3 row">
-            <div class="a col col-auto">
-                <div class="b">
-                    <div class="c">Most popular</div>
-                </div>
-            </div>
-
-            <div class="a col col-auto">
-                <div class="b">
-                    <div class="c">Appetizers</div>
-                </div>
-            </div>
-
-            <div class="a col col-auto">
-                <div class="b">
-                    <div class="c">Main dishes</div>
-                </div>
-            </div>
-
-            <div class="a col col-auto">
-                <div class="b">
-                    <div class="c">Pasta</div>
-                </div>
-            </div>
-
-            <div class="a col col-auto">
-                <div class="b">
-                    <div class="c">Sandwiches</div>
-                </div>
-            </div>
-        
-        
-        </div> *@
-
 
         <div id="navBar" class="mb-3">
             <ul class="navItems-parent">
-                <li><a class="active" href="#popular">Most popular</a></li>
-                <li><a href="#appetizers">Appetizers</a></li>
-                <li><a href="#mainDishes">Main dishes</a></li>
-                <li><a href="#pasta">Pasta</a></li>
-                <li><a href="#sandwiches">Sandwiches</a></li>
+                <li><a onclick="scrollToSection('popular', this)" class="active" href="#popular">Most popular</a></li>
+                <li><a onclick="scrollToSection('appetizers', this)" href="#appetizers">Appetizers</a></li>
+                <li><a onclick="scrollToSection('mainDishes', this)" href="#mainDishes">Main dishes</a></li>
+                <li><a onclick="scrollToSection('pasta', this)" href="#pasta">Pasta</a></li>
+                <li><a onclick="scrollToSection('sandwiches', this)" href="#sandwiches">Sandwiches</a></li>
             </ul>
         </div>
         <div class="line"></div>
@@ -395,6 +384,7 @@
                     <div class="productPrice">RM 9.90</div>
                 </div>
             </div>
+            <div class="productContentsLine"></div>
         </div>
 
         <div id="pasta" class="navSection">
@@ -441,6 +431,7 @@
                     <div class="productPrice">RM 9.90</div>
                 </div>
             </div>
+            <div class="productContentsLine"></div>
         </div>
 
         <div id="sandwiches" class="navSection">
@@ -493,18 +484,56 @@
 </div>
 
 
-
 <script>
+    var sections = document.querySelectorAll(".navSection");
+    var navLinks = document.querySelectorAll("#navBar a");
+    var clickScroll = false;
+
     $(document).ready(function () {
         document.getElementById("cartIcon").addEventListener("click", function () {
             window.location.href = "cart";
         });
 
-        var anchors = document.querySelectorAll("li a")
+        // var anchors = document.querySelectorAll("li a")
 
-        anchors.forEach(anchorTag => {
-            anchorTag.addEventListener("click", transferActiveClass)
-        })
+        // anchors.forEach(anchorTag => {
+        //     anchorTag.addEventListener("click", transferActiveClass)
+        // })
+
+        // navLinks.forEach(link => {
+        //     link.addEventListener("click", (event) => {
+        //         // event.preventDefault();
+        //         var sectionId = link.getAttribute("href").slice(1);
+
+        //         var section = document.getElementById(sectionId);
+        //         var bannerHeight = document.getElementById('fixTop').offsetHeight;
+
+        //         if (section) {
+        //             var offsetTop = section.offsetTop - bannerHeight;
+
+        //             clickScroll = true;
+
+        //             window.scrollTo({
+        //                 top: offsetTop,
+        //                 behavior: 'auto'
+        //             });
+
+
+        //         }
+
+        //         navLinks.forEach(navLink => {
+                   
+        //             navLink.classList.remove("active");
+        //         });
+
+                
+        //         link.classList.add("active");
+
+        //         event.preventDefault();
+
+
+        //     });
+        // })
 
         var allProducts = document.querySelectorAll(".product")
 
@@ -512,40 +541,48 @@
             product.addEventListener("click", () => {
                 location.href = "/Home/MenuDetail/"
             })
-        })
+        }) 
 
-        // const navBar = document.querySelector('#navBar ul');
+        window.addEventListener("scroll", updateActiveState);
+    })
 
-        // navBar.addEventListener('scroll', () => {
-        //     document.body.style.overflowX = navBar.scrollWidth > navBar.clientWidth ? 'scroll' : 'hidden';
-        // });
+    function updateActiveState() {
+        if (clickScroll){
+            clickScroll = false;
+            return;
+        }
 
-        var sections = document.querySelectorAll(".navSection");
-        var navLinks = document.querySelectorAll("#navBar a");
+        var current = "";
 
-        window.addEventListener("scroll", function () {
-            var current = "";
+        sections.forEach(function (section) {
+            var sectionTop = section.offsetTop;
+            var sectionHeight = section.clientHeight;
+            var bannerHeight = document.getElementById('fixTop').offsetHeight;
 
-            sections.forEach(function (section) {
-                var sectionTop = section.offsetTop;
-                var sectionHeight = section.clientHeight;
+            // console.log(sectionTop)
+            // console.log(sectionHeight)
 
-                // console.log(sectionTop)
-                // console.log(sectionHeight)
+            // if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            //     current = section.id;
+            // }
 
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    current = section.id;
-                }
-            });
+            //to trigger the transfer of active class when contents scroll under banner
+            if (pageYOffset >= sectionTop - bannerHeight) {
+                current = section.id;
+            }
+        });
 
+        if (current){
             navLinks.forEach(function (link) {
                 link.classList.remove("active");
                 if (link.getAttribute("href").slice(1) === current) {
                     link.classList.add("active");
                 }
             });
-        });
-    })
+        }
+        
+
+    }
 
     function transferActiveClass() {
         var activeElement = document.querySelector(".active")
@@ -555,6 +592,7 @@
 
         }
 
+        // console.log(this)
         this.classList.add("active");
     }
 
@@ -563,5 +601,32 @@
         window.location.href = "/cart/";
     }
 
+    function scrollToSection(sectionId, anchorTag) {
+        var section = document.getElementById(sectionId);
+        var bannerHeight = document.getElementById('fixTop').offsetHeight;
 
+        if (section) {
+            var offsetTop = section.offsetTop - bannerHeight;
+
+            // console.log(section.offsetTop)
+            // console.log(section.clientHeight)
+            // console.log(pageYOffset)
+
+            clickScroll = true;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'auto'
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+        });
+
+        // console.log(anchorTag);
+        anchorTag.classList.add("active");
+
+        event.preventDefault();
+    }
 </script>

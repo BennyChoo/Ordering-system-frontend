@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Front_end___ordering.ViewComponents
+
+@{
     Layout = "~/views/shared/_Layout.cshtml";
 }
 
@@ -233,6 +235,7 @@
 
         <div id="navBar" class="mb-3">
             <ul class="navItems-parent">
+                @* <li><a onclick="loadSection('Category', 'MostPopular', 'popular', this)" class="active" href="javascript:void(0);">Most popular</a></li> *@
                 <li><a onclick="scrollToSection('popular', this)" class="active" href="#popular">Most popular</a></li>
                 <li><a onclick="scrollToSection('appetizers', this)" href="#appetizers">Appetizers</a></li>
                 <li><a onclick="scrollToSection('mainDishes', this)" href="#mainDishes">Main dishes</a></li>
@@ -247,7 +250,8 @@
     <div id="productContents">
 
         <div id="popular" class="navSection">
-            <div class="row mb-5 product">
+            @await Component.InvokeAsync("Category", new {categoryType = "MostPopular"})
+            @* <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
@@ -287,12 +291,13 @@
                     <div class="productPrice">RM 9.90</div>
                 </div>
             </div>
-            <div class="productContentsLine"></div>
+            <div class="productContentsLine"></div> *@
         </div>
 
 
         <div id="appetizers" class="navSection">
-            <div class="row mb-5 product">
+            @await Component.InvokeAsync("Category", new { categoryType = "Appetizers" })
+            @* <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
@@ -335,13 +340,14 @@
                     <div class="productPrice">RM 9.90</div>
                 </div>
             </div>
-            <div class="productContentsLine"></div>
+            <div class="productContentsLine"></div> *@
         </div>
 
 
 
         <div id="mainDishes" class="navSection">
-            <div class="row mb-5 product">
+            @await Component.InvokeAsync("Category", new { categoryType = "MainDishes" })
+            @* <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
@@ -384,11 +390,12 @@
                     <div class="productPrice">RM 9.90</div>
                 </div>
             </div>
-            <div class="productContentsLine"></div>
+            <div class="productContentsLine"></div> *@
         </div>
 
         <div id="pasta" class="navSection">
-            <div class="row mb-5 product">
+            @await Component.InvokeAsync("Category", new { categoryType = "Pasta" })
+           @*  <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
@@ -431,11 +438,12 @@
                     <div class="productPrice">RM 9.90</div>
                 </div>
             </div>
-            <div class="productContentsLine"></div>
+            <div class="productContentsLine"></div> *@
         </div>
 
         <div id="sandwiches" class="navSection">
-            <div class="row mb-5 product">
+            @await Component.InvokeAsync("Category", new { categoryType = "Sandwiches" })
+            @* <div class="row mb-5 product">
                 <div class="col-4">
                     <img src="/img/frame-2351@2x.png" alt="mozarella" class="w-100 h-100" />
 
@@ -477,7 +485,7 @@
 
                     <div class="productPrice">RM 9.90</div>
                 </div>
-            </div>
+            </div> *@
         </div>
     </div>
 
@@ -628,5 +636,33 @@
         anchorTag.classList.add("active");
 
         event.preventDefault();
+    }
+
+    function loadSection(controller, action, targetId, anchorTag) {
+        var section = document.getElementById(targetId);
+        var bannerHeight = document.getElementById('fixTop').offsetHeight;
+
+        var url = '@Url.Action("Action1", "Controller")';
+        url = url.replace('Action1', action).replace('Controller', controller);
+        url += "#" + targetId;
+
+
+        $.get(url, function (data) {
+            $('#' + targetId).html(data);
+
+            var offsetTop = section.offsetTop - bannerHeight;
+
+            clickScroll = true;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'auto'
+            });
+
+
+            // $('html, body').animate({
+            //     scrollTop: $('#' + targetId).offset().top
+            // }, 'auto');
+        });
     }
 </script>

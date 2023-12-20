@@ -249,33 +249,33 @@
 
     <div id="productContents">
 
-        <div id="popular" class="navSection">
+        @* <div id="popular" class="navSection"> *@
             @await Component.InvokeAsync("Category", new {categoryType = "MostPopular"})
             
-        </div>
+        @* </div> *@
 
 
-        <div id="appetizers" class="navSection">
+        @* <div id="appetizers" class="navSection"> *@
             @await Component.InvokeAsync("Category", new { categoryType = "Appetizers" })
             
-        </div>
+        @* </div> *@
 
 
 
-        <div id="mainDishes" class="navSection">
+        @* <div id="mainDishes" class="navSection"> *@
             @await Component.InvokeAsync("Category", new { categoryType = "MainDishes" })
             
-        </div>
+        @* </div> *@
 
-        <div id="pasta" class="navSection">
+        @* <div id="pasta" class="navSection"> *@
             @await Component.InvokeAsync("Category", new { categoryType = "Pasta" })
            
-        </div>
+        @* </div> *@
 
-        <div id="sandwiches" class="navSection">
+        @* <div id="sandwiches" class="navSection"> *@
             @await Component.InvokeAsync("Category", new { categoryType = "Sandwiches" })
             
-        </div>
+        @* </div> *@
     </div>
 
 </div>

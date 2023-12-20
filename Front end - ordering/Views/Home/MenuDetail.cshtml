@@ -154,17 +154,30 @@
         border: 2px solid white;
         background-color: transparent;
     }
+
+    .aIcon {
+        max-width: 50px;
+        width: 8vw;
+    }
 </style>
 
 
 
 <div>
     <div class="d-flex justify-content-between mb-4">
-        <img id="logoImg" src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 0.5rem;" />
+        <img id="logoImg" src="/img/logo.svg" alt="logo" style="font-size: 2rem; padding-top: 1rem;" />
         <div id="cartContainer">
             <div id="cartQty" class="wrapper mt-3 text-white" hidden>0</div>
             <div class="" style="font-size: 2rem;"><i id="cartIcon" class="bi bi-cart2"></i></div>
         </div>
+    </div>
+
+    <div class="mb-3" style="font-size: 1.2rem; font-weight: 600;">
+        <div class="arrow-icon">
+            <img class="aIcon" src="/img/arrow-left.svg">
+            <span>Back to menu</span>
+        </div>
+
     </div>
 
     <div id="foodBanner" class="mb-4">
@@ -173,7 +186,7 @@
                 <img src="/img/frame-2360.png" alt="" class="w-100" />
             </div>
         </div>
-        <button id="closeDetailBtn">X</button>
+        @* <button id="closeDetailBtn">X</button> *@
     </div>
 
 
@@ -189,6 +202,21 @@
         </div>
         <div class="productPrice">
             RM 9.90
+        </div>
+    </div>
+
+    <div id="variations">
+        @await Component.InvokeAsync("Variations", new { variationsType = "AddOns" })
+        
+        @await Component.InvokeAsync("Variations", new { variationsType = "ChangePart" })
+        
+        @await Component.InvokeAsync("Variations", new {variationsType = "Takeaway"})
+
+        <div id="instructions" class="mb-4">
+            <div class="fw-bold mb-2" style="font-size: 1.2rem;">Add special instructions</div>
+            <div>
+                <textarea style="border-radius: 10px; width: 100%; min-height: 70px; max-height: 70px; resize: none;"></textarea>
+            </div>
         </div>
     </div>
 
@@ -264,7 +292,7 @@
 
         var addOnsBtn = document.querySelectorAll(".addOnsBtn");
 
-        var closeDetailBtn = document.getElementById("closeDetailBtn");
+        // var closeDetailBtn = document.getElementById("closeDetailBtn");
 
         deductQtyBtn.addEventListener("click",
             () => {
@@ -340,16 +368,21 @@
                 }
             });
 
-        logo.addEventListener("click", () => {
-            window.location.href = "/";
-        });
+        logo.addEventListener("click", backToMenu);
 
 
-        closeDetailBtn.addEventListener("click", () => {
-            window.location.href = "/";
-        });
+        // closeDetailBtn.addEventListener("click", backToMenu);
+
+        //back to menu arrow icon
+        var backToMenuArrow = document.querySelector(".aIcon");
+
+        backToMenuArrow.addEventListener("click", backToMenu);
 
     });
+
+    function backToMenu() {
+        window.location.href = "/";
+    }
 
     function directToCheckout() {
         //direct to checkout page

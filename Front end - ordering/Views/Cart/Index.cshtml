@@ -327,12 +327,12 @@
             <div class="col-7 padLeft">
                 <div class="d-flex flex-column justify-content-center pb-3 col-12" style="font-weight: 500;">
                     <div class="moneyRow">Mozarella sticks</div>
-                    <div class="moneyRow" style="color: rgb(40, 187, 173);"><span hidden class="strikeT">RM <span id="strikeMoney1">12.90</span></span>RM <span id="money1">9.90</span></div>
+                    <div class="moneyRow" style="color: rgb(40, 187, 173);"><span hidden class="strikeT">RM <span class="beforeDiscountPrice">12.90</span></span>RM <span class="actualPrice">9.90</span></div>
                 </div>
                 <div class="d-flex">
                     <div class="qtyContainer col-6">
                         <div class="minusBtn d-flex justify-content-center align-items-center pb-1">-</div>
-                        <span id="productQty" style="">1</span>
+                        <span id="productQty" class="productQty" style="">1</span>
                         <div class="addBtn d-flex justify-content-center align-items-center pb-1">+</div>
                     </div>
                     <div class="col-2 d-flex">
@@ -340,6 +340,8 @@
                     </div>
                 </div>
             </div>
+            <div  id="strikeMoney1" class="productBeforeDiscTotal" hidden>12.90</div>
+            <div id="money1" class="productAfterDiscTotal" hidden>9.90</div>
         </div>
         @*Single Row*@
         <div class="d-flex mb-3 pb-2 w-100 whiteBg" id="row2">
@@ -349,18 +351,21 @@
             <div class="col-7 padLeft">
                 <div class="d-flex flex-column justify-content-center pb-3 col-12" style="font-weight: 500;">
                     <div class="moneyRow">Mango smoothies</div>
-                    <div class="moneyRow" style="color: rgb(40, 187, 173);"><span class="strikeT">RM <span id="strikeMoney2">12.90</span></span>&nbsp;&nbsp;RM <span id="money2">10.30</span></div>
+                    <div class="moneyRow" style="color: rgb(40, 187, 173);"><span class="strikeT">RM <span class="beforeDiscountPrice">12.90</span></span>&nbsp;&nbsp;RM <span class="actualPrice">10.30</span></div>
                 </div>
                 <div class="d-flex">
                     <div class="qtyContainer col-6">
                         <div class="minusBtn minusBtn2 d-flex justify-content-center align-items-center pb-1">-</div>
-                        <span id="productQty2" style="">1</span>
+                        <span id="productQty2" class="productQty" style="">1</span>
                         <div class="addBtn addBtn2 d-flex justify-content-center align-items-center pb-1">+</div>
                     </div>
                     <div class="col-2  d-flex">
                         <img src="/img/trash3.svg" alt="" class="trashPic" id="tr2"/>
                     </div>
                 </div>
+                <div id="strikeMoney2" class="productBeforeDiscTotal" hidden>12.90</div>
+                <div id="money2" class="productAfterDiscTotal" hidden>10.30</div>
+
             </div>
         </div>
         @*Single Row*@
@@ -371,12 +376,12 @@
             <div class="col-7 padLeft">
                 <div class="d-flex flex-column justify-content-center pb-3 col-12" style="font-weight: 500;">
                     <div class="moneyRow">Chicken rice set A</div>
-                    <div class="moneyRow" style="color: rgb(40, 187, 173);"><span class="strikeT">RM <span id="strikeMoney3">12.90</span></span>&nbsp;&nbsp;RM <span id="money3">10.30</span></div>
+                    <div class="moneyRow" style="color: rgb(40, 187, 173);"><span class="strikeT">RM <span class="beforeDiscountPrice">12.90</span></span>&nbsp;&nbsp;RM <span class="actualPrice">10.30</span></div>
                 </div>
                 <div class="d-flex">
                     <div class="qtyContainer col-6">
                         <div class="minusBtn minusBtn3 d-flex justify-content-center align-items-center pb-1">-</div>
-                        <span id="productQty3" style="">1</span>
+                        <span id="productQty3" class="productQty" style="">1</span>
                         <div class="addBtn addBtn3 d-flex justify-content-center align-items-center pb-1">+</div>
                     </div>
                     <div class="col-2  d-flex">
@@ -384,6 +389,8 @@
                     </div>
                 </div>
             </div>
+            <div id="strikeMoney3" class="productBeforeDiscTotal" hidden>12.90</div>
+            <div id="money3" class="productAfterDiscTotal" hidden>10.30</div>
         </div>
     </div>
     @* below is the summary block *@
@@ -465,89 +472,147 @@
             $(divId).removeClass('d-flex');
         });
 
+        var allDeductQtyBtn = document.querySelectorAll(".minusBtn");
+        var allAddQtyBtn = document.querySelectorAll(".addBtn");
+
+        allDeductQtyBtn.forEach(deductQtyBtn => {
+            deductQtyBtn.addEventListener("click",
+                () => {
+                    var productQty = deductQtyBtn.closest(".qtyContainer").querySelector(".productQty");
+                    var qty = parseInt(productQty.textContent);
+
+                    var productAfterDiscTotal = deductQtyBtn.closest(".whiteBg").querySelector(".productAfterDiscTotal");
+                    var productBeforeDiscTotal = deductQtyBtn.closest(".whiteBg").querySelector(".productBeforeDiscTotal");
+
+                    if (qty > 1) {
+                        productQty.textContent = qty - 1;
+
+                        var actualPrice = parseFloat(deductQtyBtn.closest(".whiteBg").querySelector(".actualPrice").textContent);
+                        var beforeDiscPrice = parseFloat(deductQtyBtn.closest(".whiteBg").querySelector(".beforeDiscountPrice").textContent);
+
+                        productAfterDiscTotal.textContent = (parseFloat(productAfterDiscTotal.textContent) - actualPrice).toFixed(2);
+
+                        productBeforeDiscTotal.textContent = (parseFloat(productBeforeDiscTotal.textContent) - beforeDiscPrice).toFixed(2);
+
+                        // $('#money1').text((parseFloat($('#money1').text()) - 9.90).toFixed(2));
+                        // $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) - 12.90).toFixed(2));
+                    }
+                    countNewTaxTotal();
+                });
+        })
+
+
+        allAddQtyBtn.forEach(addQtyBtn => {
+            addQtyBtn.addEventListener("click",
+                () => {
+                    var productQty = addQtyBtn.closest(".qtyContainer").querySelector(".productQty");
+                    var qty = parseInt(productQty.textContent);
+
+                    productQty.textContent = qty + 1;
+
+                    var productAfterDiscTotal = addQtyBtn.closest(".whiteBg").querySelector(".productAfterDiscTotal");
+                    var productBeforeDiscTotal = addQtyBtn.closest(".whiteBg").querySelector(".productBeforeDiscTotal");
+
+                    var actualPrice = parseFloat(addQtyBtn.closest(".whiteBg").querySelector(".actualPrice").textContent);
+
+                    var beforeDiscPrice = parseFloat(addQtyBtn.closest(".whiteBg").querySelector(".beforeDiscountPrice").textContent);
+
+                    productAfterDiscTotal.textContent = (parseFloat(productAfterDiscTotal.textContent) + actualPrice).toFixed(2);
+
+                    productBeforeDiscTotal.textContent = (parseFloat(productBeforeDiscTotal.textContent) + beforeDiscPrice).toFixed(2);
+
+                    // $('#money1').text((parseFloat($('#money1').text()) + 9.90).toFixed(2));
+                    //         $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) + 12.90).toFixed(2));
+                    countNewTaxTotal();
+                });
+        })
+
+
+            
+
         /* Horrible code, should loop id and what not but it's a todo for now. */
-        var deductQtyBtn = document.querySelector(".minusBtn");
-        var addQtyBtn = document.querySelector(".addBtn");
-        var productQty = document.getElementById("productQty");
+        // var deductQtyBtn = document.querySelector(".minusBtn");
+        // var addQtyBtn = document.querySelector(".addBtn");
+        // var productQty = document.getElementById("productQty");
 
-        deductQtyBtn.addEventListener("click",
-            () => {
-                var qty = parseInt(productQty.textContent);
+        // deductQtyBtn.addEventListener("click",
+        //     () => {
+        //         var qty = parseInt(productQty.textContent);
 
-                if (qty > 0) {
-                    productQty.textContent = qty - 1;
-                    $('#money1').text((parseFloat($('#money1').text()) - 9.90).toFixed(2));
-                }
-                countNewTaxTotal();
-            });
+        //         if (qty > 1) {
+        //             productQty.textContent = qty - 1;
+        //             $('#money1').text((parseFloat($('#money1').text()) - 9.90).toFixed(2));
+        //         }
+        //         countNewTaxTotal();
+        //     });
 
-        addQtyBtn.addEventListener("click",
-            () => {
-                var qty = parseInt(productQty.textContent);
-                productQty.textContent = qty + 1;
-                $('#money1').text((parseFloat($('#money1').text()) + 9.90).toFixed(2));
-                countNewTaxTotal();
-            });
+        // addQtyBtn.addEventListener("click",
+        //     () => {
+        //         var qty = parseInt(productQty.textContent);
+        //         productQty.textContent = qty + 1;
+        //         $('#money1').text((parseFloat($('#money1').text()) + 9.90).toFixed(2));
+        //         countNewTaxTotal();
+        //     });
 
 
-        var deductQtyBtn2 = document.querySelector(".minusBtn2");
-        var addQtyBtn2 = document.querySelector(".addBtn2");
-        var productQty2 = document.getElementById("productQty2");
+        // var deductQtyBtn2 = document.querySelector(".minusBtn2");
+        // var addQtyBtn2 = document.querySelector(".addBtn2");
+        // var productQty2 = document.getElementById("productQty2");
 
-        deductQtyBtn2.addEventListener("click",
-            () => {
-                var qty = parseInt(productQty2.textContent);
+        // deductQtyBtn2.addEventListener("click",
+        //     () => {
+        //         var qty = parseInt(productQty2.textContent);
 
-                if (qty > 0) {
-                    productQty2.textContent = qty - 1;
-                    $('#money2').text((parseFloat($('#money2').text()) - 10.30).toFixed(2));
-                    $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) - 12.90).toFixed(2));
-                    countNewTaxTotal();
-                }
-            });
+        //         if (qty > 0) {
+        //             productQty2.textContent = qty - 1;
+        //             $('#money2').text((parseFloat($('#money2').text()) - 10.30).toFixed(2));
+        //             $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) - 12.90).toFixed(2));
+        //             countNewTaxTotal();
+        //         }
+        //     });
 
-        addQtyBtn2.addEventListener("click",
-            () => {
-                var qty = parseInt(productQty2.textContent);
-                productQty2.textContent = qty + 1;
-                $('#money2').text((parseFloat($('#money2').text()) + 10.30).toFixed(2));
-                $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) + 12.90).toFixed(2));
-                countNewTaxTotal();
-            });
+        // addQtyBtn2.addEventListener("click",
+        //     () => {
+        //         var qty = parseInt(productQty2.textContent);
+        //         productQty2.textContent = qty + 1;
+        //         $('#money2').text((parseFloat($('#money2').text()) + 10.30).toFixed(2));
+        //         $('#strikeMoney2').text((parseFloat($('#strikeMoney2').text()) + 12.90).toFixed(2));
+        //         countNewTaxTotal();
+        //     });
 
-        var deductQtyBtn3 = document.querySelector(".minusBtn3");
-        var addQtyBtn3 = document.querySelector(".addBtn3");
-        var productQty3 = document.getElementById("productQty3");
+        // var deductQtyBtn3 = document.querySelector(".minusBtn3");
+        // var addQtyBtn3 = document.querySelector(".addBtn3");
+        // var productQty3 = document.getElementById("productQty3");
 
-        deductQtyBtn3.addEventListener("click",
-            () => {
-                var qty = parseInt(productQty3.textContent);
+        // deductQtyBtn3.addEventListener("click",
+        //     () => {
+        //         var qty = parseInt(productQty3.textContent);
 
-                if (qty > 0) {
-                    productQty3.textContent = qty - 1;
-                    $('#money3').text((parseFloat($('#money3').text()) - 10.30).toFixed(2));
-                    $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) - 12.90).toFixed(2));
-                    countNewTaxTotal();
-                }
-            });
+        //         if (qty > 0) {
+        //             productQty3.textContent = qty - 1;
+        //             $('#money3').text((parseFloat($('#money3').text()) - 10.30).toFixed(2));
+        //             $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) - 12.90).toFixed(2));
+        //             countNewTaxTotal();
+        //         }
+        //     });
 
-        addQtyBtn3.addEventListener("click",
-            () => {
-                var qty = parseInt(productQty3.textContent);
-                productQty3.textContent = qty + 1;
-                $('#money3').text((parseFloat($('#money3').text()) + 10.30).toFixed(2));
-                $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) + 12.90).toFixed(2));
-                countNewTaxTotal();
-            });
+        // addQtyBtn3.addEventListener("click",
+        //     () => {
+        //         var qty = parseInt(productQty3.textContent);
+        //         productQty3.textContent = qty + 1;
+        //         $('#money3').text((parseFloat($('#money3').text()) + 10.30).toFixed(2));
+        //         $('#strikeMoney3').text((parseFloat($('#strikeMoney3').text()) + 12.90).toFixed(2));
+        //         countNewTaxTotal();
+        //     });
+
+
+        /* End horrible code */
+
 
         var logo = document.getElementById("logoImg");
         logo.addEventListener("click", () => {
             window.location.href = "/";
         });
-
-
-        /* End horrible code */
-
     });
 
 
